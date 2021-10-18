@@ -35,6 +35,18 @@ class QuestionViewControllerTest: XCTestCase {
         XCTAssertEqual(receivedAnswer, "A1")
     }
 
+
+    func test_optionSelected_withTwoOptions_notifiesDelegateWithLastSelection() {
+        var receivedAnswer: String?
+        let sut = makeSUT(options: ["A1", "A2"]) { receivedAnswer = $0 }
+
+        sut.tableView.select(row: 0)
+        XCTAssertEqual(receivedAnswer, "A1")
+
+        sut.tableView.select(row: 1)
+        XCTAssertEqual(receivedAnswer, "A2")
+    }
+
     // MARK: - Helpers
 
     private func makeSUT(question: String = "",
