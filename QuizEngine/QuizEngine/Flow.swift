@@ -10,6 +10,7 @@ import Foundation
 protocol Router {
     typealias AnswerCallback = (String) -> Void
     func routeTo(question: String, answerCallback: @escaping AnswerCallback)
+    func routeTo(result: [String: String])
 }
 
 class Flow {
@@ -24,6 +25,8 @@ class Flow {
     func start() {
         if let firstQuestion = questions.first {
             router.routeTo(question: firstQuestion, answerCallback: routeNext(firstQuestion))
+        } else {
+            router.routeTo(result: [:])
         }
     }
 
