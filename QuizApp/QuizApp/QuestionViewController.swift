@@ -7,19 +7,21 @@
 
 import UIKit
 
-class QuestionViewController: UIViewController, UITableViewDataSource {
+class QuestionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
     private var question = ""
     private var options = [String]()
+    private var selection: ((String) ->  Void)?
     private let reuseIdentifier = "Cell"
 
-    convenience init(question: String, options: [String]) {
+    convenience init(question: String, options: [String], selection: @escaping (String) -> Void) {
         self.init()
 
         self.question = question
         self.options = options
+        self.selection = selection
     }
 
     override func viewDidLoad() {
@@ -27,6 +29,14 @@ class QuestionViewController: UIViewController, UITableViewDataSource {
 
         headerLabel.text = question
     }
+
+    // MARK: - UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selection?(options[indexPath.row])
+    }
+
+    // MARK: - UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options.count
@@ -37,6 +47,8 @@ class QuestionViewController: UIViewController, UITableViewDataSource {
         cell.textLabel?.text = options[indexPath.row]
         return cell
     }
+
+    // MARK: - Helpers
 
     private func dequeueCell(in tableView: UITableView) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) {
