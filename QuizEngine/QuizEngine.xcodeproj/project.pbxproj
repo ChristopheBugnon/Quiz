@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		46F0F6CD271DE0340075D47F /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F0F6C4271DE0340075D47F /* QuizEngine.framework */; };
+		46F0F6DD271DE0FA0075D47F /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0F6DC271DE0FA0075D47F /* FlowTest.swift */; };
+		46F0F6DF271DE26A0075D47F /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0F6DE271DE26A0075D47F /* Flow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +25,8 @@
 /* Begin PBXFileReference section */
 		46F0F6C4271DE0340075D47F /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46F0F6CC271DE0340075D47F /* QuizEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46F0F6DC271DE0FA0075D47F /* FlowTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTest.swift; sourceTree = "<group>"; };
+		46F0F6DE271DE26A0075D47F /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 		46F0F6C6271DE0340075D47F /* QuizEngine */ = {
 			isa = PBXGroup;
 			children = (
+				46F0F6DE271DE26A0075D47F /* Flow.swift */,
 			);
 			path = QuizEngine;
 			sourceTree = "<group>";
@@ -72,6 +77,7 @@
 		46F0F6D0271DE0340075D47F /* QuizEngineTests */ = {
 			isa = PBXGroup;
 			children = (
+				46F0F6DC271DE0FA0075D47F /* FlowTest.swift */,
 			);
 			path = QuizEngineTests;
 			sourceTree = "<group>";
@@ -137,9 +143,11 @@
 				TargetAttributes = {
 					46F0F6C3271DE0340075D47F = {
 						CreatedOnToolsVersion = 13.0;
+						LastSwiftMigration = 1300;
 					};
 					46F0F6CB271DE0340075D47F = {
 						CreatedOnToolsVersion = 13.0;
+						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -184,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46F0F6DF271DE26A0075D47F /* Flow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46F0F6DD271DE0FA0075D47F /* FlowTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +339,7 @@
 		46F0F6D7271DE0340075D47F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -350,6 +361,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -357,6 +369,7 @@
 		46F0F6D8271DE0340075D47F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -385,6 +398,8 @@
 		46F0F6DA271DE0340075D47F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -399,6 +414,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.christophebugnon.QuizEngineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -406,6 +422,8 @@
 		46F0F6DB271DE0340075D47F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
