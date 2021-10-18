@@ -33,7 +33,16 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: - UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selection?(tableView.indexPathsForSelectedRows!.compactMap { options[$0.row] })
+        selection?(selectedOptions(in: tableView))
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        selection?(selectedOptions(in: tableView))
+    }
+
+    private func selectedOptions(in tableView: UITableView) -> [String] {
+        guard let indexPaths = tableView.indexPathsForSelectedRows else { return [] }
+        return indexPaths.map { options[$0.row] }
     }
 
     // MARK: - UITableViewDataSource
@@ -47,8 +56,6 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.textLabel?.text = options[indexPath.row]
         return cell
     }
-
-    // MARK: - Helpers
 
     private func dequeueCell(in tableView: UITableView) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) {
