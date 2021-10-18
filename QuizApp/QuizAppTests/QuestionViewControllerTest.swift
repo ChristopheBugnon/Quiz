@@ -30,8 +30,7 @@ class QuestionViewControllerTest: XCTestCase {
         var receivedAnswer: String?
         let sut = makeSUT(options: ["A1"]) { receivedAnswer = $0 }
 
-        let indexPath = IndexPath(row: 0, section: 0)
-        sut.tableView.delegate?.tableView?(sut.tableView, didSelectRowAt: indexPath)
+        sut.tableView.select(row: 0)
 
         XCTAssertEqual(receivedAnswer, "A1")
     }
@@ -55,6 +54,11 @@ private extension UITableView {
 
     func title(at row: Int) -> String? {
         return cell(at: row)?.textLabel?.text
+    }
+
+    func select(row: Int) {
+        let indexPath = IndexPath(row: row, section: 0)
+        delegate?.tableView?(self, didSelectRowAt: indexPath)
     }
 
 }
