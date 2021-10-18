@@ -17,16 +17,7 @@ class FlowTest: XCTestCase {
 
         sut.start()
 
-        XCTAssertEqual(router.routedQuestionCount, 0)
-    }
-
-    func test_start_withOneQuestion_routesToQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1"], router: router)
-
-        sut.start()
-
-        XCTAssertEqual(router.routedQuestionCount, 1)
+        XCTAssertTrue(router.routedQuestions.isEmpty)
     }
 
     func test_start_withOneQuestion_routesToCorrectQuestion() {
@@ -35,7 +26,7 @@ class FlowTest: XCTestCase {
 
         sut.start()
 
-        XCTAssertEqual(router.routedQuestion, "Q1")
+        XCTAssertEqual(router.routedQuestions, ["Q1"])
     }
 
     func test_start_withOneQuestion_routesToCorrectQuestion_2() {
@@ -44,7 +35,7 @@ class FlowTest: XCTestCase {
 
         sut.start()
 
-        XCTAssertEqual(router.routedQuestion, "Q2")
+        XCTAssertEqual(router.routedQuestions, ["Q2"])
     }
 
     func test_start_withTwoQuestions_routesToFirstQuestion() {
@@ -53,16 +44,24 @@ class FlowTest: XCTestCase {
 
         sut.start()
 
-        XCTAssertEqual(router.routedQuestion, "Q1")
+        XCTAssertEqual(router.routedQuestions, ["Q1"])
+    }
+
+    func test_startTwice_withTwoQuestions_routesToFirstQuestionTwice() {
+        let router = RouterSpy()
+        let sut = Flow(questions: ["Q1", "Q2"], router: router)
+
+        sut.start()
+        sut.start()
+
+        XCTAssertEqual(router.routedQuestions, ["Q1", "Q1"])
     }
 
     private class RouterSpy: Router {
-        var routedQuestionCount: Int = 0
-        var routedQuestion: String? = nil
+        var routedQuestions: [String] = []
 
         func routeTo(question: String) {
-            routedQuestionCount += 1
-            routedQuestion = question
+            routedQuestions.append(question)
         }
     }
 }
