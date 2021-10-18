@@ -27,31 +27,43 @@ class QuestionViewControllerTest: XCTestCase {
     }
 
     func test_optionSelected_notifiesDelegate() {
-        var receivedAnswer: String?
-        let sut = makeSUT(options: ["A1"]) { receivedAnswer = $0 }
+        var receivedAnswers = [String]()
+        let sut = makeSUT(options: ["A1"]) { receivedAnswers = $0 }
 
         sut.tableView.select(row: 0)
 
-        XCTAssertEqual(receivedAnswer, "A1")
+        XCTAssertEqual(receivedAnswers, ["A1"])
     }
 
 
     func test_optionSelected_withTwoOptions_notifiesDelegateWithLastSelection() {
-        var receivedAnswer: String?
-        let sut = makeSUT(options: ["A1", "A2"]) { receivedAnswer = $0 }
+        var receivedAnswers = [String]()
+        let sut = makeSUT(options: ["A1", "A2"]) { receivedAnswers = $0 }
 
         sut.tableView.select(row: 0)
-        XCTAssertEqual(receivedAnswer, "A1")
+        XCTAssertEqual(receivedAnswers, ["A1"])
 
         sut.tableView.select(row: 1)
-        XCTAssertEqual(receivedAnswer, "A2")
+        XCTAssertEqual(receivedAnswers, ["A2"])
+    }
+
+    func test_optionSelected_withMultipleSelectionEnable_notifiesDelegateSelection() {
+        var receivedAnswers = [String]()
+        let sut = makeSUT(options: ["A1", "A2"]) { receivedAnswers = $0 }
+        sut.tableView.allowsMultipleSelection = true
+
+        sut.tableView.select(row: 0)
+        XCTAssertEqual(receivedAnswers, ["A1"])
+
+        sut.tableView.select(row: 1)
+        XCTAssertEqual(receivedAnswers, ["A1", "A2"])
     }
 
     // MARK: - Helpers
 
     private func makeSUT(question: String = "",
                          options: [String] = [],
-                         selection: @escaping (String) -> Void = { _ in }) -> QuestionViewController {
+                         selection: @escaping ([String]) -> Void = { _ in }) -> QuestionViewController {
         let sut = QuestionViewController(question: question, options: options, selection: selection)
         _ = sut.view
         return sut
@@ -70,6 +82,7 @@ private extension UITableView {
 
     func select(row: Int) {
         let indexPath = IndexPath(row: row, section: 0)
+        selectRow(at: indexPath, animated: false, scrollPosition: .none)
         delegate?.tableView?(self, didSelectRowAt: indexPath)
     }
 

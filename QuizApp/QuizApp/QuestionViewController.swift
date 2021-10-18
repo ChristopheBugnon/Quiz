@@ -13,10 +13,10 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
 
     private var question = ""
     private var options = [String]()
-    private var selection: ((String) ->  Void)?
+    private var selection: (([String]) ->  Void)?
     private let reuseIdentifier = "Cell"
 
-    convenience init(question: String, options: [String], selection: @escaping (String) -> Void) {
+    convenience init(question: String, options: [String], selection: @escaping ([String]) -> Void) {
         self.init()
 
         self.question = question
@@ -33,7 +33,7 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: - UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selection?(options[indexPath.row])
+        selection?(tableView.indexPathsForSelectedRows!.compactMap { options[$0.row] })
     }
 
     // MARK: - UITableViewDataSource
