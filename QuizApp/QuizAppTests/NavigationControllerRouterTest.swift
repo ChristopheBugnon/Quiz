@@ -13,6 +13,8 @@ import QuizEngine
 class NavigationControllerRouterTest: XCTestCase {
     private let navigationController = NonAnimatedNavigationController()
     private let factory = FactoryViewControllerStub()
+    private let questionSingleAnswer = Question.singleAnswer("Q1")
+    private let questionMultipleAnswer = Question.multipleAnswer("Q2")
 
     lazy var sut: NavigationControllerRouter = {
         return NavigationControllerRouter(self.navigationController, factory: self.factory)
@@ -21,11 +23,11 @@ class NavigationControllerRouterTest: XCTestCase {
     func test_routeToSecondQuestion_presentsQuestionController() {
         let controller = UIViewController()
         let secondController = UIViewController()
-        factory.stub(question: Question.singleAnswer("Q1"), controller: controller)
-        factory.stub(question: Question.singleAnswer("Q2"), controller: secondController)
+        factory.stub(question: questionSingleAnswer, controller: controller)
+        factory.stub(question: questionMultipleAnswer, controller: secondController)
 
-        sut.routeTo(question: Question.singleAnswer("Q1")) { _ in }
-        sut.routeTo(question: Question.singleAnswer("Q2")) { _ in }
+        sut.routeTo(question: questionSingleAnswer) { _ in }
+        sut.routeTo(question: questionMultipleAnswer) { _ in }
 
         XCTAssertEqual(navigationController.viewControllers.count, 2)
         XCTAssertEqual(navigationController.viewControllers.first, controller)
@@ -35,8 +37,8 @@ class NavigationControllerRouterTest: XCTestCase {
     func test_routeToQuestion_presentsQuestionControllerWithRightCallback() {
         var callBackIsFired: Bool = false
 
-        sut.routeTo(question: Question.singleAnswer("Q1")) { _ in callBackIsFired = true }
-        factory.answersCallback[Question.singleAnswer("Q1")]!("A1")
+        sut.routeTo(question: questionSingleAnswer) { _ in callBackIsFired = true }
+        factory.answersCallback[questionSingleAnswer]!("A1")
 
         XCTAssertTrue(callBackIsFired)
     }
@@ -44,8 +46,6 @@ class NavigationControllerRouterTest: XCTestCase {
     func test_routeToResult_presentsResultsController() {
         let firstController = UIViewController()
         let secondController = UIViewController()
-        let questionSingleAnswer = Question.singleAnswer("Q1")
-        let questionMultipleAnswer = Question.multipleAnswer("Q2")
         let firstResult = Result.make(answers: [questionSingleAnswer: "A1"], score: 10)
         let secondResult = Result.make(answers: [questionMultipleAnswer: "A2"], score: 20)
 
