@@ -17,6 +17,7 @@
 		46F0F79E271E97640075D47F /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0F79D271E97640075D47F /* ResultViewController.swift */; };
 		46F0F7A1271E98060075D47F /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46F0F79F271E97A30075D47F /* ResultViewController.xib */; };
 		46F0F7A3271E9DF90075D47F /* TableView+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0F7A2271E9DF90075D47F /* TableView+helpers.swift */; };
+		46F0F7A5271E9F690075D47F /* CorrectAnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46F0F7A4271E9F690075D47F /* CorrectAnswerCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		46F0F79D271E97640075D47F /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		46F0F79F271E97A30075D47F /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
 		46F0F7A2271E9DF90075D47F /* TableView+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+helpers.swift"; sourceTree = "<group>"; };
+		46F0F7A4271E9F690075D47F /* CorrectAnswerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CorrectAnswerCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				46F0F797271E0F670075D47F /* QuestionViewController.swift */,
 				46F0F799271E0FA50075D47F /* QuestionViewController.xib */,
 				46F0F79F271E97A30075D47F /* ResultViewController.xib */,
+				46F0F7A4271E9F690075D47F /* CorrectAnswerCell.xib */,
 			);
 			path = QuizApp;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				46F0F771271E0CE80075D47F /* LaunchScreen.storyboard in Resources */,
 				46F0F76E271E0CE80075D47F /* Assets.xcassets in Resources */,
 				46F0F79A271E0FA50075D47F /* QuestionViewController.xib in Resources */,
+				46F0F7A5271E9F690075D47F /* CorrectAnswerCell.xib in Resources */,
 				46F0F7A1271E98060075D47F /* ResultViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
