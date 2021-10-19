@@ -21,11 +21,21 @@ class ResultViewControllerTest: XCTestCase {
     }
 
     func test_viewDidLoad_withCorrectAnswer_rendersCorrectAnswerCell() {
-        let sut = ResultViewController()
+        let sut = makeSUT(answers: [makeAnswer(isCorrect: true)])
         _ = sut.view
 
         let indexPath = IndexPath(row: 0, section: 0)
         let cell = sut.tableView.dataSource?.tableView(sut.tableView, cellForRowAt: indexPath) as? CorrectAnswerCell
+
+        XCTAssertNotNil(cell)
+    }
+
+    func test_viewDidLoad_withWrongAnswer_rendersWrongAnswerCell() {
+        let sut = makeSUT(answers: [makeAnswer(isCorrect: false)])
+        _ = sut.view
+
+        let indexPath = IndexPath(row: 0, section: 0)
+        let cell = sut.tableView.dataSource?.tableView(sut.tableView, cellForRowAt: indexPath) as? WrongAnswerCell
 
         XCTAssertNotNil(cell)
     }
@@ -40,5 +50,9 @@ class ResultViewControllerTest: XCTestCase {
 
     private func makeDummyAnswer() -> PresentableAnswer {
         return PresentableAnswer(isCorrect: true)
+    }
+
+    private func makeAnswer(isCorrect: Bool = true) -> PresentableAnswer {
+        return PresentableAnswer(isCorrect: isCorrect)
     }
 }

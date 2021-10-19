@@ -11,9 +11,9 @@ struct PresentableAnswer {
     let isCorrect: Bool
 }
 
-class CorrectAnswerCell: UITableViewCell {
+class CorrectAnswerCell: UITableViewCell {}
 
-}
+class WrongAnswerCell: UITableViewCell {}
 
 class ResultViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var headerLabel: UILabel!
@@ -42,6 +42,7 @@ class ResultViewController: UIViewController, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return CorrectAnswerCell()
+        let answer = answers[indexPath.row]
+        return answer.isCorrect ? CorrectAnswerCell() : WrongAnswerCell()
     }
 }
