@@ -97,7 +97,7 @@ class FlowTest: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT(questions: [String]) -> Flow {
+    private func makeSUT(questions: [String]) -> Flow<String, String, RouterSpy> {
         return Flow(questions: questions, router: router)
     }
 
@@ -106,7 +106,7 @@ class FlowTest: XCTestCase {
         var routedResult: [String: String]? = nil
         var answerCallback: AnswerCallback = { _ in }
 
-        func routeTo(question: String, answerCallback: @escaping AnswerCallback) {
+        func routeTo(question: String, answerCallback: @escaping (String) -> Void) {
             routedQuestions.append(question)
             self.answerCallback = answerCallback
         }
