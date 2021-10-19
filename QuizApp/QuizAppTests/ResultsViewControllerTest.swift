@@ -1,5 +1,5 @@
 //
-//  ResultViewControllerTest.swift
+//  ResultsViewControllerTest.swift
 //  QuizAppTests
 //
 //  Created by Christophe Bugnon on 19/10/2021.
@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 @testable import QuizApp
 
-class ResultViewControllerTest: XCTestCase {
+class ResultsViewControllerTest: XCTestCase {
 
     func test_viewDidLoad_rendersSummary() {
         XCTAssertEqual(makeSUT(summary: "a summary").headerLabel.text, "a summary")
@@ -21,7 +21,7 @@ class ResultViewControllerTest: XCTestCase {
     }
 
     func test_viewDidLoad_withCorrectAnswer_configureCell() {
-        let sut = makeSUT(answers: [makeAnswer(question: "Q1", answer: "A1", isCorrect: true)])
+        let sut = makeSUT(answers: [makeAnswer(question: "Q1", answer: "A1")])
 
         let cell = sut.tableView.cell(at: 0) as? CorrectAnswerCell
 
@@ -31,7 +31,7 @@ class ResultViewControllerTest: XCTestCase {
     }
 
     func test_viewDidLoad_withWrongAnswer_configureCell() {
-        let sut = makeSUT(answers: [makeAnswer(question: "Q1", answer: "A1", wrongAnswer: "wrong", isCorrect: false)])
+        let sut = makeSUT(answers: [makeAnswer(question: "Q1", answer: "A1", wrongAnswer: "wrong")])
 
         let cell = sut.tableView.cell(at: 0) as? WrongAnswerCell
 
@@ -43,13 +43,13 @@ class ResultViewControllerTest: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT(summary: String = "", answers: [PresentableAnswer] = []) -> ResultViewController {
-        let sut = ResultViewController(summary: summary, answers: answers)
+    private func makeSUT(summary: String = "", answers: [PresentableAnswer] = []) -> ResultsViewController {
+        let sut = ResultsViewController(summary: summary, answers: answers)
         _ = sut.view
         return sut
     }
 
-    private func makeAnswer(question: String = "", answer: String = "", wrongAnswer: String? = nil, isCorrect: Bool = true) -> PresentableAnswer {
-        return PresentableAnswer(question: question, answer: answer, wrongAnswer: wrongAnswer, isCorrect: isCorrect)
+    private func makeAnswer(question: String = "", answer: String = "", wrongAnswer: String? = nil) -> PresentableAnswer {
+        return PresentableAnswer(question: question, answer: answer, wrongAnswer: wrongAnswer)
     }
 }
