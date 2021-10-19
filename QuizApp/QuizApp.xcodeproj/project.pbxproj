@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		466EA947271F4B5600CA392D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466EA946271F4B5600CA392D /* Result.swift */; };
 		46F0F765271E0CE50075D47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0F764271E0CE50075D47F /* AppDelegate.swift */; };
 		46F0F76E271E0CE80075D47F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46F0F76D271E0CE80075D47F /* Assets.xcassets */; };
 		46F0F771271E0CE80075D47F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46F0F76F271E0CE80075D47F /* LaunchScreen.storyboard */; };
@@ -55,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		466EA946271F4B5600CA392D /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		46F0F761271E0CE50075D47F /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46F0F764271E0CE50075D47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46F0F76D271E0CE80075D47F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				46F0F79B271E971E0075D47F /* ResultsViewControllerTest.swift */,
 				46F0F7A2271E9DF90075D47F /* TableView+helpers.swift */,
 				46F0F7E4271F113B0075D47F /* NavigationControllerRouterTest.swift */,
+				466EA946271F4B5600CA392D /* Result.swift */,
 			);
 			path = QuizAppTests;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46F0F7E5271F113B0075D47F /* NavigationControllerRouterTest.swift in Sources */,
+				466EA947271F4B5600CA392D /* Result.swift in Sources */,
 				46F0F796271E0F2B0075D47F /* QuestionViewControllerTest.swift in Sources */,
 				46F0F79C271E971E0075D47F /* ResultsViewControllerTest.swift in Sources */,
 				46F0F7A3271E9DF90075D47F /* TableView+helpers.swift in Sources */,
