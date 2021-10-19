@@ -18,9 +18,12 @@ class iOSViewControllerFactory: ViewControllerFactory {
     func questionViewController(for question: Question<String>, answerCallback: @escaping ([String]) -> Void) -> UIViewController {
         switch question {
         case let .singleAnswer(value):
-            return QuestionViewController(question: value, options: options[question]!, selection: { _ in })
-        default:
-            return UIViewController()
+            return QuestionViewController(question: value, options: options[question]!, selection: answerCallback)
+        case let .multipleAnswer(value):
+            let controller = QuestionViewController(question: value, options: options[question]!, selection: answerCallback)
+            _ = controller.view
+            controller.tableView.allowsMultipleSelection = true
+            return controller
         }
     }
 
