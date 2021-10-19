@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ResultsViewController: UIViewController, UITableViewDataSource {
+class ResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
@@ -27,6 +27,13 @@ class ResultsViewController: UIViewController, UITableViewDataSource {
         headerLabel.text = summary
         tableView.register(CorrectAnswerCell.self)
         tableView.register(WrongAnswerCell.self)
+        tableView.rowHeight = UITableView.automaticDimension
+    }
+
+    // MARK: - UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return answers[indexPath.row].wrongAnswer == nil ? 70 : 90
     }
 
     // MARK: - UITableViewDataSource
