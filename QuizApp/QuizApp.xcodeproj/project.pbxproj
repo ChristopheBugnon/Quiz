@@ -27,6 +27,7 @@
 		46F0F7E2271F0F370075D47F /* QuizEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46F0F7E0271F0F370075D47F /* QuizEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		46F0F7E5271F113B0075D47F /* NavigationControllerRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0F7E4271F113B0075D47F /* NavigationControllerRouterTest.swift */; };
 		46F0F7E7271F11CE0075D47F /* NavigationControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0F7E6271F11CE0075D47F /* NavigationControllerRouter.swift */; };
+		46F0F7E9271F1E310075D47F /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0F7E8271F1E310075D47F /* Question.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		46F0F7E0271F0F370075D47F /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46F0F7E4271F113B0075D47F /* NavigationControllerRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouterTest.swift; sourceTree = "<group>"; };
 		46F0F7E6271F11CE0075D47F /* NavigationControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouter.swift; sourceTree = "<group>"; };
+		46F0F7E8271F1E310075D47F /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				46F0F79F271E97A30075D47F /* ResultsViewController.xib */,
 				46F0F7A4271E9F690075D47F /* CorrectAnswerCell.xib */,
 				46F0F7E6271F11CE0075D47F /* NavigationControllerRouter.swift */,
+				46F0F7E8271F1E310075D47F /* Question.swift */,
 			);
 			path = QuizApp;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				46F0F7E7271F11CE0075D47F /* NavigationControllerRouter.swift in Sources */,
 				46F0F798271E0F670075D47F /* QuestionViewController.swift in Sources */,
 				46F0F765271E0CE50075D47F /* AppDelegate.swift in Sources */,
+				46F0F7E9271F1E310075D47F /* Question.swift in Sources */,
 				46F0F7AF271EA7610075D47F /* WrongAnswerCell.swift in Sources */,
 				46F0F79E271E97640075D47F /* ResultsViewController.swift in Sources */,
 				46F0F7AB271EA73A0075D47F /* PresentableAnswer.swift in Sources */,
