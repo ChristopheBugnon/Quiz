@@ -12,19 +12,6 @@ import QuizEngine
 
 class NavigationControllerRouterTest: XCTestCase {
 
-    func test_routeToQuestion_presentsQuestionController() {
-        let navigationController = UINavigationController()
-        let factory = FactoryViewControllerStub()
-        let controller = UIViewController()
-        factory.stub(question: "Q1", controller: controller)
-        let sut = NavigationControllerRouter(navigationController, factory: factory)
-
-        sut.routeTo(question: "Q1") { _ in }
-
-        XCTAssertEqual(navigationController.viewControllers.count, 1)
-        XCTAssertEqual(navigationController.viewControllers.first, controller)
-    }
-
     func test_routeToSecondQuestion_presentsQuestionController() {
         let navigationController = UINavigationController()
         let factory = FactoryViewControllerStub()
