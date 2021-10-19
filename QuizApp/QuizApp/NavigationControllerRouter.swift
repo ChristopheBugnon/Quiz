@@ -21,7 +21,7 @@ class NavigationControllerRouter: Router {
         show(factory.questionViewController(for: question, answerCallback: answerCallback))
     }
 
-    func routeTo(result: Result<Question<String>, String>) {
+    func routeTo(result: Result<Question<String>, [String]>) {
         show(factory.resultsViewController(for: result))
     }
 
