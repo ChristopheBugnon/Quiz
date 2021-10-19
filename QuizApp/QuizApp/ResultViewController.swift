@@ -10,6 +10,7 @@ import UIKit
 struct PresentableAnswer {
     let question: String
     let answer: String
+    let wrongAnswer: String?
     let isCorrect: Bool
 }
 
@@ -19,7 +20,11 @@ class CorrectAnswerCell: UITableViewCell {
 
 }
 
-class WrongAnswerCell: UITableViewCell {}
+class WrongAnswerCell: UITableViewCell {
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var correctAnswerLabel: UILabel!
+    @IBOutlet weak var wrongAnswerLabel: UILabel!
+}
 
 class ResultViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var headerLabel: UILabel!
@@ -40,6 +45,7 @@ class ResultViewController: UIViewController, UITableViewDataSource {
 
         headerLabel.text = summary
         tableView.register(UINib(nibName: "CorrectAnswerCell", bundle: nil), forCellReuseIdentifier: "CorrectAnswerCell")
+        tableView.register(UINib(nibName: "WrongAnswerCell", bundle: nil), forCellReuseIdentifier: "WrongAnswerCell")
     }
 
     // MARK: - UITableViewDataSource
@@ -53,7 +59,12 @@ class ResultViewController: UIViewController, UITableViewDataSource {
         if answer.isCorrect {
             return correctAnswerCell(for: answer)
         }
-        return WrongAnswerCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WrongAnswerCell") as! WrongAnswerCell
+        cell.questionLabel.text = answer.question
+        cell.correctAnswerLabel.text = answer.answer
+        cell.wrongAnswerLabel.text = answer.wrongAnswer
+        return cell
+
     }
 
     private func correctAnswerCell(for answer: PresentableAnswer) -> UITableViewCell {
