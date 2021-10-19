@@ -24,8 +24,7 @@ class ResultViewControllerTest: XCTestCase {
         let sut = makeSUT(answers: [makeAnswer(isCorrect: true)])
         _ = sut.view
 
-        let indexPath = IndexPath(row: 0, section: 0)
-        let cell = sut.tableView.dataSource?.tableView(sut.tableView, cellForRowAt: indexPath) as? CorrectAnswerCell
+        let cell = sut.tableView.cell(at: 0) as? CorrectAnswerCell
 
         XCTAssertNotNil(cell)
     }
@@ -34,8 +33,7 @@ class ResultViewControllerTest: XCTestCase {
         let sut = makeSUT(answers: [makeAnswer(isCorrect: false)])
         _ = sut.view
 
-        let indexPath = IndexPath(row: 0, section: 0)
-        let cell = sut.tableView.dataSource?.tableView(sut.tableView, cellForRowAt: indexPath) as? WrongAnswerCell
+        let cell = sut.tableView.cell(at: 0) as? WrongAnswerCell
 
         XCTAssertNotNil(cell)
     }
